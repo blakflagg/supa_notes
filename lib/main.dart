@@ -39,9 +39,7 @@ class MyApp extends StatelessWidget {
 class AuthWrapper extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    print('ReRender Auth Wrapper');
     final authState = ref.watch(authNotifierProvider);
-    print(authState.user);
     if (authState.isLoading) {
       return Scaffold(
         body: Center(child: CircularProgressIndicator()),

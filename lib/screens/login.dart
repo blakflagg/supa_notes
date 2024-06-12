@@ -1,6 +1,7 @@
 // login_page.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import '../services/auth/auth_notifier.dart';
 
 class LoginPage extends ConsumerStatefulWidget {
@@ -42,6 +43,11 @@ class _LoginPageState extends ConsumerState<LoginPage> {
               },
               child: Text('Login'),
             ),
+            ElevatedButton(
+                onPressed: () {
+                  print(Supabase.instance.client.auth.currentUser);
+                },
+                child: Text("Check")),
             if (authState.error != null) Text(authState.error!),
           ],
         ),
