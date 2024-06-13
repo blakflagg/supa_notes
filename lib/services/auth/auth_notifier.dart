@@ -7,21 +7,18 @@ class AuthState {
   final User? user;
   final bool isLoading;
   final String? error;
-  final AuthChangeEvent? event;
 
-  AuthState({this.user, this.isLoading = false, this.error, this.event});
+  AuthState({this.user, this.isLoading = false, this.error});
 
   AuthState copyWith({
     User? user,
     bool? isLoading,
     String? error,
-    AuthChangeEvent? event,
   }) {
     return AuthState(
       user: user,
       isLoading: isLoading ?? this.isLoading,
       error: error ?? this.error,
-      event: event ?? this.event,
     );
   }
 }

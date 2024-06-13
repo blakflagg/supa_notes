@@ -21,29 +21,37 @@ class _LoginPageState extends ConsumerState<LoginPage> {
     return Scaffold(
       appBar: AppBar(title: Text('Login')),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            TextField(
-              controller: _emailController,
-              decoration: InputDecoration(labelText: 'Email'),
+        child: Card(
+          elevation: 5,
+          margin: const EdgeInsets.all(25),
+          child: Container(
+            height: 300,
+            padding: EdgeInsets.all(15),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextField(
+                  controller: _emailController,
+                  decoration: InputDecoration(labelText: 'Email'),
+                ),
+                TextField(
+                  controller: _passwordController,
+                  decoration: InputDecoration(labelText: 'Password'),
+                  obscureText: true,
+                ),
+                ElevatedButton(
+                  onPressed: () async {
+                    await authNotifier.signIn(
+                      _emailController.text,
+                      _passwordController.text,
+                    );
+                  },
+                  child: Text('Login'),
+                ),
+                if (authState.error != null) Text(authState.error!),
+              ],
             ),
-            TextField(
-              controller: _passwordController,
-              decoration: InputDecoration(labelText: 'Password'),
-              obscureText: true,
-            ),
-            ElevatedButton(
-              onPressed: () async {
-                await authNotifier.signIn(
-                  _emailController.text,
-                  _passwordController.text,
-                );
-              },
-              child: Text('Login'),
-            ),
-            if (authState.error != null) Text(authState.error!),
-          ],
+          ),
         ),
       ),
     );
