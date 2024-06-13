@@ -18,7 +18,7 @@ class AuthState {
     AuthChangeEvent? event,
   }) {
     return AuthState(
-      user: user ?? this.user,
+      user: user,
       isLoading: isLoading ?? this.isLoading,
       error: error ?? this.error,
       event: event ?? this.event,
