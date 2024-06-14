@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:supa_notes/screens/login.dart';
+import 'package:supa_notes/screens/login_screen.dart';
 import 'package:supa_notes/services/auth/auth_notifier.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import './screens/home.dart';
-import './screens/page2.dart';
+import './screens/notes_screen.dart';
 
 final RouteObserver<PageRoute> routeObserver = RouteObserver<PageRoute>();
 
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       home: AuthWrapper(),
       routes: {
         HomePage.routeName: (ctx) => const HomePage(),
-        Page2.routeName: (ctx) => const Page2(),
+        NotesScreen.routeName: (ctx) => const NotesScreen(),
       },
       navigatorObservers: [routeObserver],
     );
