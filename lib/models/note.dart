@@ -21,10 +21,10 @@ class Note {
 
   Map<String, dynamic> toJson() {
     return {
-      'id': id,
-      'title': title,
-      'content': content,
-      'user_id': userId,
+      // 'id': id,
+      'title': title.toString(),
+      'content': content.toString(),
+      'user_id': userId.toString(),
     };
   }
 }
