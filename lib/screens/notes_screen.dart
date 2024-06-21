@@ -36,7 +36,7 @@ class _NotesScreenState extends ConsumerState<NotesScreen> {
           SizedBox(
             height: 400,
             child: notes.when(
-              loading: () => CircularProgressIndicator(),
+              loading: () => Center(child: CircularProgressIndicator()),
               error: (error, statck) => Text('Error $error'),
               data: (value) => ListView.builder(
                 itemCount: value.length,

@@ -42,6 +42,19 @@ class NotesProvider extends AutoDisposeAsyncNotifier<List<Note>> {
     }
   }
 
+  Future<void> deleteNote(int id) async {
+    try {
+      final response =
+          await _supabase.from("tblnotes").delete().eq("id", id).select();
+      List<Note> notes = response.map((note) => Note.fromJson(note)).toList();
+      // state = AsyncData(notes);
+      final currentState = state.valueOrNull ?? [];
+      state = AsyncValue.data([...currentState, ...notes]);
+    } catch (e) {
+      print(e);
+    }
+  }
+
   void printState() {
     print(state);
   }
